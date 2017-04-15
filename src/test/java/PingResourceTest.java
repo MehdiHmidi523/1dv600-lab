@@ -1,3 +1,5 @@
+package java;
+
 import lnu.resources.*;
 import io.dropwizard.testing.junit.ResourceTestRule;
 import org.junit.ClassRule;
@@ -19,4 +21,5 @@ public class PingResourceTest {
 		assertThat(resources.client().target("/ping").request().get(String.class))
 				.isEqualTo("{\"answer\": \"pong\"}");
 	}
+
 }

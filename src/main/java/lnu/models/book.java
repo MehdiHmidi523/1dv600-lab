@@ -1,86 +1,122 @@
 package lnu.models;
 
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import java.io.IOException;
+
+
+@XmlRootElement(name = "book")
+@XmlType(propOrder = {"id", "author", "title", "genre", "price", "publishDate", "description"})
 public class book {
 
-public int id;
-public String title;
-public String author;
-public String genre;
-public String price;
-public String publishDate;
-public String description;
+    @XmlAttribute(name="id")
+    public String id;
+    public String title;
+    public String author;
+    public String genre;
+    public String price;
+    @XmlElement(name = "publish_date")
+    public String publishDate;
+    public String description;
 
-// constructor
-public book(int id, String title, String author, String genre, String price, String publishDate, String description) {
-
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.genre = genre;
-        this.price = price;
-        this.publishDate = publishDate;
-        this.description = description;
-        }
-
-    public String toString() {
-    return "\nReference Number: " +  GetId() + "\nTitle: " + GetTitle() + "\nAuthor: " + GetAuthor() + "\nGenre: " +GetGenre()+ "\nPrice: " + GetPrice() + "\nPublication Date: " + GetPublishDate() + "\nDescription: " + GetDescription();
+    public book(String newTitle, String newAuthor, String newGenre, String newPublishDate, String newId, String newDescription, String newPrice){
+        title = newTitle;
+        id = newId;
+        author = newAuthor;
+        genre = newGenre;
+        publishDate = newPublishDate;
+        description = newDescription;
+        price = newPrice;
     }
 
-    public int GetId() {
+    public book() {
+
+    }
+
+    public String toJson(){
+        ObjectMapper mapper = new ObjectMapper();
+        String json = "";
+        try{
+            json = mapper.writeValueAsString(this);
+        }catch (JsonGenerationException | JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return json;
+    }
+
+    @Override
+    public String toString(){
+        String output = "Author: " + author + "Title: " + title + "Genre: " + genre + "Price: " + price + "\n Published on "
+                + publishDate + "About: " + description;
+        return output;
+    }
+    @XmlAttribute
+    public String getId() {
         return id;
     }
 
-    public void SetId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String GetTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void SetTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public String GetAuthor() {
+
+    public String getAuthor() {
         return author;
     }
 
-    public void SetAuthor(String author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
-    public String GetGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void SetGenre(String genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
-    public String GetPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void SetPrice(String genre) {
-        this.price = price;
+    public void setPrice(String genre) {
+        this.price = genre;
     }
 
-    public String GetPublishDate() {
+
+    public String getPublishDate() {
         return publishDate;
     }
-
-    public void SetPublishDate(String publishDate) {
+    @XmlElement(name = "publishDate")
+    public void setPublishDate(String publishDate) {
         this.publishDate = publishDate;
     }
 
-    public String GetDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void SetDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
+
 
 }

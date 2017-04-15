@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CatalogTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2017-03-15T07:37:24" hostname="vagrant-ubuntu-trusty-64" time="2.91">
+  <properties/>
+  <testcase name="testGetBooks" classname="CatalogTests" time="0.001"/>
+  <testcase name="testtoJson" classname="CatalogTests" time="2.759"/>
+  <testcase name="testAddBook" classname="CatalogTests" time="0.001"/>
+  <testcase name="testUpdateBook" classname="CatalogTests" time="0.001"/>
+  <testcase name="testGetBook" classname="CatalogTests" time="0.0"/>
+  <testcase name="testDeleteBook" classname="CatalogTests" time="0.005"/>
+  <testcase name="testToBook" classname="CatalogTests" time="0.131"/>
+  <testcase name="testFilterBook" classname="CatalogTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
